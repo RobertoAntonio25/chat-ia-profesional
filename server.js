@@ -10,7 +10,9 @@ import { Ollama } from "ollama";
 
 const app = express();
 const server = http.createServer(app);
-const io = new Server(server);
+const io = new Server(server, {
+  cors: { origin: "*" }, // permite conectar desde Live Server (otro puerto/origen)
+});
 const PORT = process.env.PORT || 3000;
 
 // Le decimos a Express que nuestra carpeta "public" es pública.
@@ -57,7 +59,7 @@ io.on("connection", (socket) => {
       // Iteramos sobre el flujo de datos y enviamos cada sílaba por el túnel
       for await (const part of response) {
         if (part.message.content) {
-          (io.emit("ia-chunk"),
+         io.emit("ia-chunk",
             { id: idMensajeIA, texto: part.message.content });
         }
       }

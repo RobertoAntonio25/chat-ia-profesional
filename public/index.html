@@ -1,1 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chat Profesional WebSockets</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <main class="chat-container">
+      <header>
+        <h1>🟢 Chat en Vivo</h1>
+      </header>
 
+      <!-- Aqui se inyectaran los mensajes dinamicamente -->
+      <ul id="lista-mensajes" class="mensajes"></ul>
+
+      <!-- Formulario para enviar datos -->
+      <form id="formulario-chat" class="controles">
+        <input
+          type="text"
+          id="input-nombre"
+          placeholder="Tu alias..."
+          required
+          autocomplete="off"
+        />
+        <input
+          type="text"
+          id="input-texto"
+          placeholder="Escribe un mensaje"
+          required
+          autocomplete="off"
+        />
+        <button type="submit">Enviar</button>
+      </form>
+    </main>
+
+
+    <script src="https://cdn.socket.io/4.8.1/socket.io.min.js"></script>
+    <script src="./main.js"></script>
+  </body>
+</html>
